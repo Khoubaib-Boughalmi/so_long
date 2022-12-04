@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:55:55 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/04 14:58:17 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/04 16:57:53 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@
 int get_num_rows_map(int fd);
 int get_num_cols_map(int fd);
 
+//utils.c
+void ft_printf_err(char * str);
 
 #endif
