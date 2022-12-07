@@ -6,74 +6,74 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 15:39:06 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/04 16:28:08 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/05 18:18:52 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-typedef struct s_map{
-	int o_cols;
-	int o_rows;
-}	t_map;
-
-int populate_map_metadata(t_map *map_info)
+char **free_map_matrix(char **map_matrix, int pos)
 {
-	int	fd1;
-	int	fd2;
+	int	i;
 
-	fd1 = open("maps/map1.txt", O_RDONLY);
-	fd2 = open("maps/map1.txt", O_RDONLY);
-	if (fd1 < 0 || fd2 < 0)
-		return 0;
-	map_info->o_rows = get_num_cols_map(fd1);
-	map_info->o_cols = get_num_rows_map(fd2);
-	close(fd1);
-	close(fd2);
-	return (1);
-}
-
-int get_num_rows_map(int fd)
-{
-	int count;
-	char buff;
-	if(fd <= 0 || fd == 1 || fd == 2)
-		return (0);
-	count = 0;
-	while (read(fd, &buff, 1))
+	i = 0;
+	while (i <= pos)
 	{
-		if (buff == '\n')
-			count++;		
+		free(map_matrix[i]);
+		i++;
 	}
-	if (!count)
-		return (0);
-	count++;
-	return (count);
+	free(map_matrix);
+	return (0);
 }
 
-int get_num_cols_map(int fd)
+char **allocate_map_matrix(t_map map_info)
 {
-	int count;
-	char buff;
-
-	if(fd <= 0 || fd == 1 || fd == 2)
-		return (0);
-	count = 0;
-	while (read(fd, &buff, 1))
+	char	**map_matrix;
+	int		i;
+	
+	i = 0;
+	map_matrix = (char **)malloc(map_info.o_rows * sizeof(char *));
+	if (!map_matrix)
+		return free_map_matrix(map_matrix, -1);
+	while (i < map_info.o_rows)
 	{
-		if (buff == '\n')
-			return (count);
-		count++;		
+		map_matrix[i] = (char *)malloc(map_info.o_cols * sizeof(char));
+		if (!map_matrix[i])
+			return free_map_matrix(map_matrix, i);
+		i++;
 	}
-	return (count);
+	return (map_matrix);
 }
 
-int main()
+void populate_map_data(t_map map_info, char **map_matrix, char *map_name)
 {
-	// define t_map struct
-	t_map map_info;
+	char	c;
+	int		fd;
+	int		i;
 
-	populate_map_metadata(&map_info);
-	printf("%d", )
-	return 0;
+	i = 0;
+	fd = open(map_name, O_RDONLY);
+	while (i < map_info.o_rows)
+	{
+		read(fd, map_matrix[i], map_info.o_cols);
+		read(fd, &c, 1);
+		i++;
+	}
+	close(fd);
 }
+
+
+// int main()
+// {
+// 	char	**map_matrix;
+// 	t_map	map_info;
+// 	t_component	component;
+	
+// 	populate_map_metadata(&map_info, "maps/map1.txt");
+// 	map_matrix = allocate_map_matrix(map_info);
+// 	populate_map_data(map_info, map_matrix, "maps/map1.txt");
+// 	// printf("%d\n", check_valid_walls(map_matrix, map_info));
+// 	printf("%d", check_components(map_matrix, map_info, &component));
+
+// 	return (0);
+// }

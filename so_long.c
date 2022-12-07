@@ -6,32 +6,12 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:55:33 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/04 16:19:17 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:56:26 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <mlx.h>
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-	void	*img_ground;
-	void	*img_tree;
-	void	*img_player_right;
-	void	*img_player_left;
-	void	*img_player_back;
-	void	*img_player_front;
-	void	*img_key;
-}				t_vars;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -164,7 +144,7 @@ int	main(void)
 	mlx_put_image_to_window(mlx, win, img_key, 280, 120);
 	mlx_put_image_to_window(mlx, win, img_key, 400, 320);
 	mlx_put_image_to_window(mlx, win, img_key, 320, 40);
-	mlx_put_image_to_window(mlx, win, img_key, 680, 640);
+	mlx_put_image_to_window(mlx, win, img_key, 700, 640);
 	mlx_key_hook(win, key_hook, &vars);
     // Start the event loop and display the window
     mlx_loop(mlx);
