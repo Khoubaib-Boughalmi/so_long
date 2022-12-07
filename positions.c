@@ -6,12 +6,13 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 11:04:35 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/06 15:04:23 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/07 12:11:52 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+//get initale position of the player and set it to vars struct
 void get_initial_pos(t_vars *vars, t_map *map_info, char **map_matrix)
 {
 	int	i;
@@ -39,6 +40,7 @@ void get_initial_pos(t_vars *vars, t_map *map_info, char **map_matrix)
 		i++;
 	}	
 }
+
 int is_wall(char **map, t_player player_pos, char c)
 {
 	if (c == 'D')

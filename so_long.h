@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:55:55 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/06 15:43:54 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/07 15:07:16 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,32 +67,32 @@ typedef struct	s_vars {
 	t_component		component;
 }				t_vars;
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+typedef struct	s_new_pos {
+	int		new_xpos;
+	int		new_ypos;
+}				t_new_pos;
 
 //map_to_matrix file
 char **free_map_matrix(char **map_matrix, int pos);
-char **allocate_map_matrix(t_map map_info);
-void populate_map_data(t_map map_info, char **map_matrix, char *map_name);
+char **allocate_map_matrix(t_map *map_info);
+void populate_map_data(t_map *map_info, char **map_matrix, char *map_name);
 
 
 //map_check file
 int	get_num_rows_map(int fd);
 int get_num_cols_map(int fd);
 int populate_map_metadata(t_map *map_info, char *map_name);
-int check_valid_walls(char **map, t_map map_info);
-int check_components(char **map, t_map map_info,  t_vars *vars);
+int check_valid_walls(char **map, t_map *map_info);
+int check_components(char **map, t_map *map_info,  t_vars *vars);
+int check_is_rectangular(t_map *map_info);
+int check_valid_cols(t_map *map_info, char *map_name);
+
 //utils.c
-void	ft_printf_err(char * str);
+int	ft_printf_err(char * str);
 void	ft_bzero(void *s, size_t n);
 //render_map.c
-void render_map(t_vars *vars, t_map map_info, char **map);
-void render_map_components(t_vars *vars, t_map map_info, char **map);
+void render_map(t_vars *vars, t_map *map_info, char **map);
+void render_map_components(t_vars *vars, t_map *map_info, char **map);
 //positions.c
 void get_initial_pos(t_vars *vars, t_map *map_info, char **map_matrix);
 int is_wall(char **map, t_player player_pos, char c);

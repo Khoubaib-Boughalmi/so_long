@@ -6,20 +6,21 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:51:03 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/06 15:43:24 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/07 15:30:15 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void render_map_components(t_vars *vars, t_map map_info, char **map)
+// render map's element based on the map matrix
+void render_map_components(t_vars *vars, t_map *map_info, char **map)
 {
 	int i = 0;
 	int j = 0;
-	while (i < map_info.o_rows)
+	while (i < map_info->o_rows)
 	{
 		j = 0;
-		while (j < map_info.o_cols)
+		while (j < map_info->o_cols)
 		{
 			mlx_put_image_to_window(vars->mlx, vars->win, vars->img_ground, j * 40, i * 40);
 			if(map[i][j] == '1')
@@ -36,119 +37,78 @@ void render_map_components(t_vars *vars, t_map map_info, char **map)
 	}
 }
 
+void key_hook_core(t_vars *param, char key, t_new_pos *new_pos, void *image)
+{
+	if (is_wall(param->map, param->player_pos, key))
+	   {
+			param->player_pos.steps++;
+	   		if(is_collectable(param->map, param->player_pos, key))
+		   		param->player_pos.collected++;
+			mlx_put_image_to_window(param->mlx, param->win, param->img_ground, \
+					param->player_pos.xpos * 40, param->player_pos.ypos * 40);
+			param->player_pos.xpos = new_pos->new_xpos;
+			param->player_pos.ypos = new_pos->new_ypos;
+			mlx_put_image_to_window(param->mlx, param->win, image, \
+					param->player_pos.xpos * 40, param->player_pos.ypos * 40);
+
+	   }
+}
+
+// void norminette_dzb()
+
+//add key handlers to key events
 int key_hook(int button, t_vars *param)
 {	
+	t_new_pos new_pos;
 	
-	printf("aaaaa %d\n", param->component.collectable);
-	if(param->player_pos.collected == param->component.collectable)
+	new_pos.new_xpos = param->player_pos.xpos;
+	new_pos.new_ypos = param->player_pos.ypos;
+	if (button == 2)
 	{
-		printf("all good\n");
+		new_pos.new_xpos += 1;
+		key_hook_core(param, 'D', &new_pos, param->img_player_right);
 	}
-	if (button == 2) // D
-	{
-	   if (is_wall(param->map, param->player_pos, 'D'))
-	   {
-		   param->player_pos.steps++;
-	   		if(is_collectable(param->map, param->player_pos, 'D'))
-		   		param->player_pos.collected++;
-			mlx_put_image_to_window(param->mlx, param->win, param->img_ground, \
-					param->player_pos.xpos * 40, param->player_pos.ypos * 40);
-			param->player_pos.xpos += 1;
-			mlx_put_image_to_window(param->mlx, param->win, param->img_player_right, \
-					param->player_pos.xpos * 40, param->player_pos.ypos * 40);
-	   }
-   }
+		
     if (button == 0) // A
-   	{   
-		if (is_wall(param->map, param->player_pos, 'A'))
-	 	{
-			param->player_pos.steps++;
-			if(is_collectable(param->map, param->player_pos, 'A'))
-		   		param->player_pos.collected++;
-			mlx_put_image_to_window(param->mlx, param->win, param->img_ground, \
-					param->player_pos.xpos * 40, param->player_pos.ypos * 40);
-			param->player_pos.xpos -= 1;
-			mlx_put_image_to_window(param->mlx, param->win, param->img_player_left, \
-					param->player_pos.xpos * 40, param->player_pos.ypos * 40) ;
-
-		}	
-   	}
+	{
+		new_pos.new_xpos -= 1;
+		key_hook_core(param, 'A', &new_pos, param->img_player_left);
+	}
+   
    if (button == 1) // S
    {
-	   if (is_wall(param->map, param->player_pos, 'S'))
-	 	{
-			param->player_pos.steps++;
-			if(is_collectable(param->map, param->player_pos, 'S'))
-		   		param->player_pos.collected++;
-			mlx_put_image_to_window(param->mlx, param->win, param->img_ground, \
-					param->player_pos.xpos * 40, param->player_pos.ypos * 40);
-			param->player_pos.ypos += 1;
-			mlx_put_image_to_window(param->mlx, param->win, param->img_player_front, \
-					param->player_pos.xpos * 40, param->player_pos.ypos * 40);
-		
-		}
-   }	
-   if (button == 13) // W
-   {
-	   if (is_wall(param->map, param->player_pos, 'W'))
-	 	{
-			param->player_pos.steps++;
-			if(is_collectable(param->map, param->player_pos, 'W'))
-		   		param->player_pos.collected++;
-			mlx_put_image_to_window(param->mlx, param->win, param->img_ground, \
-					param->player_pos.xpos * 40, param->player_pos.ypos * 40);
-			param->player_pos.ypos -= 1;
-			mlx_put_image_to_window(param->mlx, param->win, param->img_player_back, \
-					param->player_pos.xpos * 40, param->player_pos.ypos * 40);
-
-		}
-   }
-   printf("steps : %d\n", param->player_pos.steps);	
-   printf("collected : %d\n", param->player_pos.collected);	
+		new_pos.new_ypos += 1;
+		key_hook_core(param, 'S', &new_pos, param->img_player_front);
+	}
+	if (button == 13) // W
+	{
+		new_pos.new_ypos -= 1;
+		key_hook_core(param, 'W', &new_pos, param->img_player_back);
+	}
 	return 0; 	 
 }
 
-void render_map(t_vars *vars, t_map map_info, char **map_matrix)
+//initiate variables and populate structs
+void render_map(t_vars *vars, t_map *map_info, char **map_matrix)
 {
-	int width;
-	int height;
+	int w;
+	int h;
 
-	width = 0;
-	height = 0;
+	w = 0;
+	h = 0;
     vars->map = map_matrix;
     vars->mlx = mlx_init();
-    vars->win = mlx_new_window(vars->mlx, map_info.o_cols * 40, map_info.o_rows * 40, "lainie JR");
-	vars->img_ground = mlx_xpm_file_to_image(vars->mlx, "img/ground.xpm", &width, &height);
-    vars->img_tree = mlx_xpm_file_to_image(vars->mlx, "img/tree.xpm", &width, &height);
-    vars->img_player_right = mlx_xpm_file_to_image(vars->mlx, "img/link_right.xpm", &width, &height);
-    vars->img_player_left = mlx_xpm_file_to_image(vars->mlx, "img/link_left.xpm", &width, &height);
-    vars->img_player_back = mlx_xpm_file_to_image(vars->mlx, "img/link_up.xpm", &width, &height);
-    vars->img_player_front = mlx_xpm_file_to_image(vars->mlx, "img/link.xpm", &width, &height);
-    vars->img_key = mlx_xpm_file_to_image(vars->mlx, "img/key.xpm", &width, &height);
-    vars->img_tent = mlx_xpm_file_to_image(vars->mlx, "img/tent.xpm", &width, &height);
+    vars->win = mlx_new_window(vars->mlx, map_info->o_cols * 40,\
+	 map_info->o_rows * 40, "lainie JR");
+	vars->img_ground = mlx_xpm_file_to_image(vars->mlx, "img/ground.xpm", &w, &h);
+    vars->img_tree = mlx_xpm_file_to_image(vars->mlx, "img/tree.xpm", &w, &h);
+    vars->img_player_right = mlx_xpm_file_to_image(vars->mlx, "img/pright.xpm", &w, &h);
+    vars->img_player_left = mlx_xpm_file_to_image(vars->mlx, "img/pleft.xpm", &w, &h);
+    vars->img_player_back = mlx_xpm_file_to_image(vars->mlx, "img/pback.xpm", &w, &h);
+    vars->img_player_front = mlx_xpm_file_to_image(vars->mlx, "img/pfront.xpm", &w, &h);
+    vars->img_key = mlx_xpm_file_to_image(vars->mlx, "img/key.xpm", &w, &h);
+    vars->img_tent = mlx_xpm_file_to_image(vars->mlx, "img/tent.xpm", &w, &h);
 	render_map_components(vars, map_info, map_matrix);
 	mlx_key_hook(vars->win, key_hook, vars);
 	mlx_loop(vars->mlx);
-}
-int main()
-{
-	t_vars vars;
-	t_map map_info;
-
-	map_info.o_rows = 9;
-	map_info.o_cols = 13;
-	// vars.player_pos.xpos = 80;
-	// vars.player_pos.ypos = 280;
-	
-	char **map_matrix = allocate_map_matrix(map_info);
-	populate_map_data(map_info, map_matrix, "maps/map1.txt");
-	check_components(map_matrix, map_info, &vars);
-	get_initial_pos(&vars, &map_info, map_matrix);
-	render_map(&vars, map_info, map_matrix);
-	// for (int i = 0; i < map_info.o_rows; i++)
-	// {
-	// 	write(1, map_matrix[i], map_info.o_cols);
-	// 	write(1, "\n", 1);
-	// }
-	return 0;
 }
