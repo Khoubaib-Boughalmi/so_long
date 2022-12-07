@@ -13,13 +13,14 @@
 #include "so_long.h"
 
 //get initale position of the player and set it to vars struct
-void get_initial_pos(t_vars *vars, t_map *map_info, char **map_matrix)
+void	get_initial_pos(t_vars *vars, t_map *map_info, char **map_matrix)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	ft_bzero(&vars->player_pos, sizeof(vars->player_pos)); //initialize player pos to 0 (x, y, #steps)
+	ft_bzero(&vars->player_pos, sizeof(vars->player_pos));
+	//initialize player pos to 0 (x, y, #steps)
 	while (i < map_info->o_rows)
 	{
 		j = 0;
@@ -38,10 +39,10 @@ void get_initial_pos(t_vars *vars, t_map *map_info, char **map_matrix)
 			j++;
 		}
 		i++;
-	}	
+	}
 }
 
-int is_wall(char **map, t_player player_pos, char c)
+int	is_wall(char **map, t_player player_pos, char c)
 {
 	if (c == 'D')
 	{
@@ -66,7 +67,7 @@ int is_wall(char **map, t_player player_pos, char c)
 	return (1);
 }
 
-int is_collectable(char **map, t_player player_pos, char c)
+int	is_collectable(char **map, t_player player_pos, char c)
 {
 	if (c == 'D')
 	{
@@ -101,5 +102,4 @@ int is_collectable(char **map, t_player player_pos, char c)
 		}
 	}
 	return (0);
-	
 }

@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int ft_printf_err(char * str)
+int	ft_printf_err(char *str)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ int ft_printf_err(char * str)
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	if (!n)

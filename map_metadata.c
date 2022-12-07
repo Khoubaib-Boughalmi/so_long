@@ -13,17 +13,18 @@
 #include "so_long.h"
 
 // return us the #of rows in map
-int get_num_rows_map(int fd)
+int	get_num_rows_map(int fd)
 {
-	int count;
-	char buff;
-	if(fd <= 0 || fd == 1 || fd == 2)
+	int		count;
+	char	buff;
+
+	if (fd <= 0 || fd == 1 || fd == 2)
 		return (0);
 	count = 0;
 	while (read(fd, &buff, 1))
 	{
 		if (buff == '\n')
-			count++;		
+			count++;
 	}
 	if (!count)
 		return (0);
@@ -32,33 +33,33 @@ int get_num_rows_map(int fd)
 }
 
 // return us the #of cols in map
-int get_num_cols_map(int fd)
+int	get_num_cols_map(int fd)
 {
-	int count;
-	char buff;
+	int		count;
+	char	buff;
 
-	if(fd <= 0 || fd == 1 || fd == 2)
+	if (fd <= 0 || fd == 1 || fd == 2)
 		return (0);
 	count = 0;
 	while (read(fd, &buff, 1))
 	{
 		if (buff == '\n')
 			return (count);
-		count++;		
+		count++;
 	}
 	return (count);
 }
 
 // populate the t_map struct so that we can use it later (#of rows && #of cols)
-int populate_map_metadata(t_map *map_info, char *map_name)
+int	populate_map_metadata(t_map *map_info, char *map_name)
 {
-	int	fd1;
-	int	fd2;
+	int fd1;
+	int fd2;
 
 	fd1 = open(map_name, O_RDONLY);
 	fd2 = open(map_name, O_RDONLY);
 	if (fd1 < 0 || fd2 < 0)
-		return 0;
+		return (0);
 	map_info->o_rows = get_num_rows_map(fd1);
 	map_info->o_cols = get_num_cols_map(fd2);
 	close(fd1);

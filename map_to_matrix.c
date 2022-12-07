@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-char **free_map_matrix(char **map_matrix, int pos)
+char	**free_map_matrix(char **map_matrix, int pos)
 {
 	int	i;
 
@@ -27,27 +27,27 @@ char **free_map_matrix(char **map_matrix, int pos)
 }
 
 // Allocate a matrix of size rows X cols
-char **allocate_map_matrix(t_map *map_info)
+char	**allocate_map_matrix(t_map *map_info)
 {
 	char	**map_matrix;
 	int		i;
-	
+
 	i = 0;
 	map_matrix = (char **)malloc(map_info->o_rows * sizeof(char *));
 	if (!map_matrix)
-		return free_map_matrix(map_matrix, -1);
+		return (free_map_matrix(map_matrix, -1));
 	while (i < map_info->o_rows)
 	{
 		map_matrix[i] = (char *)malloc(map_info->o_cols * sizeof(char));
 		if (!map_matrix[i])
-			return free_map_matrix(map_matrix, i);
+			return (free_map_matrix(map_matrix, i));
 		i++;
 	}
 	return (map_matrix);
 }
 
 //Fill the map matrix with data from the map file
-void populate_map_data(t_map *map_info, char **map_matrix, char *map_name)
+void	populate_map_data(t_map *map_info, char **map_matrix, char *map_name)
 {
 	char	c;
 	int		fd;
@@ -63,4 +63,3 @@ void populate_map_data(t_map *map_info, char **map_matrix, char *map_name)
 	}
 	close(fd);
 }
-
