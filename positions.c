@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 11:04:35 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/08 13:40:15 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:41:06 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ int	is_exit_core(char **map, t_new_pos *new_pos, t_vars *vars)
 		ft_printf("~~~~~~~ YOU WON ~~~~~~~\n");
 		return (1);
 	}
+	else
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img_tent, vars->exit_pos.xpos * 40, vars->exit_pos.ypos * 40);
 	return (0);
 }
 

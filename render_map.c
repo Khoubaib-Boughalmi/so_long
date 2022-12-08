@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:51:03 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/08 13:49:30 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:57:58 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ int	key_hook_core(t_vars *vars, int key, t_new_pos *new_pos, void *image)
 		vars->player_pos.steps++;
 		if (is_collectable(vars->map, vars->player_pos, key))
 			vars->player_pos.collected++;
-		if (is_exit(vars->map, vars, key))
-			exit(EXIT_SUCCESS);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img_ground,
 			vars->player_pos.xpos * 40, vars->player_pos.ypos * 40);
+		if (is_exit(vars->map, vars, key))
+			exit(EXIT_SUCCESS);
 		vars->player_pos.xpos = new_pos->new_xpos;
 		vars->player_pos.ypos = new_pos->new_ypos;
 		player_mlx_put_image_to_window(vars, key);
@@ -129,6 +129,6 @@ void	render_map(t_vars *vars, t_map *map_info, char **map_matrix)
 	vars->img_key = mlx_xpm_file_to_image(vars->mlx, "img/key.xpm", &w, &h);
 	vars->img_tent = mlx_xpm_file_to_image(vars->mlx, "img/tent.xpm", &w, &h);
 	render_map_components(vars, map_info, map_matrix);
-	mlx_key_hook(vars->win, key_hook, vars);
+	mlx_hook(vars->win, 2, 0, key_hook, vars);
 	mlx_loop(vars->mlx);
 }
