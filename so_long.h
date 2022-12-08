@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:55:55 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/07 15:07:16 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:40:59 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 #include <fcntl.h>
 #include <fcntl.h>
 #include <mlx.h>
-
-////////////// to remove ///////////////
-#include <stdio.h>
-////////////// to remove ///////////////
 
 # include "./ft_printf/ft_printf.h"
 # include "./get_next_line/get_next_line.h"
@@ -95,6 +91,7 @@ void render_map(t_vars *vars, t_map *map_info, char **map);
 void render_map_components(t_vars *vars, t_map *map_info, char **map);
 //positions.c
 void get_initial_pos(t_vars *vars, t_map *map_info, char **map_matrix);
-int is_wall(char **map, t_player player_pos, char c);
-int is_collectable(char **map, t_player player_pos, char c);
+int is_wall(char **map, t_player player_pos, int c);
+int is_collectable(char **map, t_player player_pos, int c);
+int is_exit(char **map, t_vars *vars, int c);
 #endif

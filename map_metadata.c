@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:20:36 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/07 12:33:50 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/08 12:23:13 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	get_num_cols_map(int fd)
 // populate the t_map struct so that we can use it later (#of rows && #of cols)
 int	populate_map_metadata(t_map *map_info, char *map_name)
 {
-	int fd1;
-	int fd2;
+	int	fd1;
+	int	fd2;
 
 	fd1 = open(map_name, O_RDONLY);
 	fd2 = open(map_name, O_RDONLY);

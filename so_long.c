@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:23:36 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/07 13:36:05 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/08 12:38:27 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	so_long(void)
 
 int	main(void)
 {
-	t_vars vars;
-	t_map map_info;
-	char **map;
+	t_vars	vars;
+	t_map	map_info;
+	char	**map;
 
 	populate_map_metadata(&map_info, "maps/map1.txt");
 	if (!check_valid_cols(&map_info, "maps/map1.txt"))

@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 16:54:42 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/07 13:07:57 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/08 12:29:59 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_printf_err(char *str)
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!n)
