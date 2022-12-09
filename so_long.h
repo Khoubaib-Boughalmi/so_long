@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:55:55 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/08 13:40:59 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:52:43 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ typedef struct s_map{
 	int o_cols;
 	int o_rows;
 }	t_map;
+
+typedef struct s_cord{
+	int i;
+	int j;
+}	t_cord;
 
 typedef struct s_component{
 	int player;
@@ -94,4 +99,7 @@ void get_initial_pos(t_vars *vars, t_map *map_info, char **map_matrix);
 int is_wall(char **map, t_player player_pos, int c);
 int is_collectable(char **map, t_player player_pos, int c);
 int is_exit(char **map, t_vars *vars, int c);
+//check_path.c
+int check_path_core(char **map, t_map *info, int i, int j, char c, int *count);
+int check_path(t_map *map_info, char *map_name);
 #endif
