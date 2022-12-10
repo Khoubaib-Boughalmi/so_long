@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:20:36 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/08 12:23:13 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/10 12:54:28 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	populate_map_metadata(t_map *map_info, char *map_name)
 	fd1 = open(map_name, O_RDONLY);
 	fd2 = open(map_name, O_RDONLY);
 	if (fd1 < 0 || fd2 < 0)
-		return (0);
+		return (ft_printf_err("MAPE NAME IS INVALID"));
 	map_info->o_rows = get_num_rows_map(fd1);
 	map_info->o_cols = get_num_cols_map(fd2);
 	close(fd1);

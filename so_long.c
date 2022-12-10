@@ -6,20 +6,19 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:23:36 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/09 17:57:40 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/10 15:26:14 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	so_long(void)
+void	display_map(char **map, t_map map_info)
 {
-}
+	int	i;
+	int	j;
 
-void display_map(char **map, t_map map_info)
-{
-	int i = 0;
-	int j = 0;
+	i = 0;
+	j = 0;
 	while (i < map_info.o_rows)
 	{
 		j = 0;
@@ -33,36 +32,29 @@ void display_map(char **map, t_map map_info)
 	}
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_vars	vars;
 	t_map	map_info;
 	char	**map;
+	char	*map_name;
 
-	populate_map_metadata(&map_info, "maps/map1.txt");
-	if (!check_valid_cols(&map_info, "maps/map1.txt"))
+	map_name = ft_strjoin("maps/", argv[1]);
+	if (!populate_map_metadata(&map_info, map_name))
+		return (0);
+	if (!check_valid_cols(&map_info, map_name))
 		return (0);
 	if (!check_is_rectangular(&map_info))
 		return (0);
 	map = allocate_map_matrix(&map_info);
-	populate_map_data(&map_info, map, "maps/map1.txt");
+	populate_map_data(&map_info, map, map_name);
 	if (!check_valid_walls(map, &map_info))
 		return (0);
 	if (!check_components(map, &map_info, &vars))
 		return (0);
 	get_initial_pos(&vars, &map_info, map);
-	////////////////////////////////////
-	t_cord cord;
-	cord.i = 1;
-	cord.j = 1;
-	int count = 0;
-	display_map(map, map_info);
-	ft_printf("\n");
-	count = check_path(&map_info,"maps/map1.txt");
-	ft_printf("col : %d\n", vars.component.collectable);
-	if(count != vars.component.collectable)
-		return ft_printf_err("MAP IS INVALID NO VALID PATH");
-	////////////////////////////////////
+	if (!check_path(&vars, &map_info, map_name))
+		return (0);
 	render_map(&vars, &map_info, map);
 	return (0);
 }
