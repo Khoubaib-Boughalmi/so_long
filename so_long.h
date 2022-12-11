@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:55:55 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/10 15:36:43 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/11 16:22:42 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,17 @@ char	*ft_strjoin(char const *s1, char const *s2);
 //render_map.c
 void	render_map(t_vars *vars, t_map *map_info, char **map);
 void	render_map_components(t_vars *vars, t_map *map_info, char **map);
+//key_hook.c
+int		key_hook_core(t_vars *vars, int key, t_new_pos *new_pos, void *image);
+int		key_hook(int button, t_vars *vars);
+
 //positions.c
 void	get_initial_pos(t_vars *vars, t_map *map_info, char **map_matrix);
 int		is_wall(char **map, t_player player_pos, int c);
 int		is_collectable(char **map, t_player player_pos, int c);
 int		is_exit(char **map, t_vars *vars, int c);
 //check_path.c
-int		check_path_core(char **map, t_map *info, int i, int j, int *count);
+int		check_path_core(char **map, t_map *info, int i, int j);
 int		check_path(t_vars *vars, t_map *map_info, char *map_name);
 //exit.c
 int		safe_exit(t_vars *vars);
