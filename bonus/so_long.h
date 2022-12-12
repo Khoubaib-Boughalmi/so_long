@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:55:55 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/11 16:22:42 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:11:10 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <mlx.h>
 
 # include "./ft_printf/ft_printf.h"
+# include "./libft/libft.h"
 
 typedef struct s_map{
 	int	o_cols;
@@ -59,18 +60,32 @@ typedef struct s_img {
 	void			*img_player_front;
 	void			*img_key;
 	void			*img_tent;
+	void			*img_tnt;
+	void			*img_tnt1;
+	void			*img_tnt2;
+	void			*img_enemy;
 }				t_img;
 
 typedef struct s_vars {
 	void			*mlx;
 	void			*win;
 	char			**map;
+	int				frame;
 	t_img			img;
 	t_player		player_pos;
 	t_exit_pos		exit_pos;
 	t_component		component;
 	t_map			map_info;
+	t_list			*enemies;
+	int				animation;
+	int				i;
+	int				j;
 }				t_vars;
+
+typedef struct s_enemy {
+	int x;
+	int y;
+}	t_enemy;
 
 typedef struct s_new_pos {
 	int	new_xpos;
@@ -114,5 +129,11 @@ int		check_path_core(char **map, t_map *info, int i, int j);
 int		check_path(t_vars *vars, t_map *map_info, char *map_name);
 //exit.c
 int		safe_exit(t_vars *vars);
+//is_enemy.c
+int	is_enemy(char **map, t_player player_pos, int c);
+int	is_enemy_core(char **map, t_new_pos *new_pos);
+
+int render_enemy(t_vars *vars);
 
 #endif
+//gcc render_map.c map_check.c map_to_matrix.c utils.c so_long.c ft_printf/*.c libft/*.c positions.c is_enemy.c map_metadata.c check_path.c key_hook.c exit.c initial_position.c -lmlx -framework OpenGL -framework AppKit; 
