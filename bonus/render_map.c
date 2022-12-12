@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:51:03 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/12 16:07:34 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:11:59 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,34 @@ void	initiate_img_vars(t_vars *vars, int *w, int *h)
 	"img/enemy.xpm", w, h);
 }
 
+
+int	is_collectable_enemy_core(char **map, t_new_pos *new_pos)
+{
+	if (map[new_pos->new_ypos][new_pos->new_xpos] == 'C' || map[new_pos->new_ypos][new_pos->new_xpos] == 'T' || map[new_pos->new_ypos][new_pos->new_xpos] == 'E'  )
+		return (1);
+	return (0);
+}
+
+int is_collectable_enemy(char **map, t_player player_pos, int c)
+{
+	t_new_pos	new_pos;
+
+	new_pos.new_xpos = player_pos.xpos;
+	new_pos.new_ypos = player_pos.ypos;
+	
+	if (c == 2)
+		new_pos.new_xpos = player_pos.xpos + 1;
+	else if (c == 0)
+		new_pos.new_xpos = player_pos.xpos - 1;
+	else if (c == 13)
+		new_pos.new_ypos = player_pos.ypos - 1;
+	else if (c == 1)
+		new_pos.new_ypos = player_pos.ypos + 1;
+	return (is_collectable_enemy_core(map, &new_pos));
+}
+
 //initiate variables and populate structs
+
 
 int render_player(t_vars *vars)
 {
@@ -112,6 +139,7 @@ int render_player(t_vars *vars)
 	}
 	if (vars->frame % 10000 == 0)
 	{
+		int pos;
 		t_list *head;
 		t_player *enemy;
 
@@ -119,20 +147,88 @@ int render_player(t_vars *vars)
 		while (head)
 		{
 			enemy = head->content;
-			if (!is_wall(vars->map, *enemy, 2))
+			pos = rand() % 4; //0--3
+			ft_printf("%d\n", pos);
+			if (pos == 0)
 			{
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_ground, (enemy->xpos) * 40, enemy->ypos * 40);
-				ft_printf("%d %d\n", enemy->xpos, enemy->ypos);
-				vars->map[enemy->ypos][enemy->xpos] = '0';
-				vars->map[enemy->ypos][enemy->xpos + 1] = 'T';
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_enemy, (enemy->xpos + 1) * 40, enemy->ypos * 40);
-				if (vars->player_pos.xpos == enemy->xpos + 1 && vars->player_pos.ypos == enemy->ypos)
+				if (!is_wall(vars->map, *enemy, 2) && !is_collectable_enemy(vars->map, *enemy, 2))
 				{
-					ft_printf("SLAYED BITCH");
-					exit(EXIT_SUCCESS);
+					mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_ground, (enemy->xpos) * 40, enemy->ypos * 40);
+					vars->map[enemy->ypos][enemy->xpos] = '0';
+					vars->map[enemy->ypos][enemy->xpos + 1] = 'T';
+					mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_enemy, (enemy->xpos + 1) * 40, enemy->ypos * 40);
+					if (vars->player_pos.xpos == enemy->xpos + 1 && vars->player_pos.ypos == enemy->ypos)
+					{
+						ft_printf("SLAYED BITCH");
+						exit(EXIT_SUCCESS);
+					}
+					enemy->xpos++;
 				}
-				enemy->xpos++;
 			}
+			if (pos == 1)
+			{
+				if (!is_wall(vars->map, *enemy, 0) && !is_collectable_enemy(vars->map, *enemy, 0))
+				{
+					mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_ground, (enemy->xpos) * 40, enemy->ypos * 40);
+					vars->map[enemy->ypos][enemy->xpos] = '0';
+					vars->map[enemy->ypos][enemy->xpos - 1] = 'T';
+					mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_enemy, (enemy->xpos - 1) * 40, enemy->ypos * 40);
+					enemy->xpos--;
+					if (vars->player_pos.xpos == enemy->xpos && vars->player_pos.ypos == enemy->ypos)
+					{
+						ft_printf("SLAYED BITCH");
+						exit(EXIT_SUCCESS);
+					}
+				}
+			}
+			else if (pos == 2)
+			{
+				if (!is_wall(vars->map, *enemy, 13) && !is_collectable_enemy(vars->map, *enemy, 13))
+				{
+					mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_ground, (enemy->xpos) * 40, enemy->ypos * 40);
+					vars->map[enemy->ypos][enemy->xpos] = '0';
+					vars->map[enemy->ypos - 1][enemy->xpos] = 'T';
+					mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_enemy, (enemy->xpos) * 40, (enemy->ypos - 1) * 40);
+					enemy->ypos--;
+					if (vars->player_pos.xpos == enemy->xpos && vars->player_pos.ypos == enemy->ypos)
+					{
+						ft_printf("SLAYED BITCH");
+						exit(EXIT_SUCCESS);
+					}
+				}
+			}
+			else if (pos == 3)
+			{
+				if (!is_wall(vars->map, *enemy, 1) && !is_collectable_enemy(vars->map, *enemy, 1))
+				{
+					mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_ground, (enemy->xpos) * 40, enemy->ypos * 40);
+					vars->map[enemy->ypos][enemy->xpos] = '0';
+					vars->map[enemy->ypos + 1][enemy->xpos] = 'T';
+					mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_enemy, (enemy->xpos) * 40, (enemy->ypos + 1) * 40);
+					enemy->ypos++;
+					if (vars->player_pos.xpos == enemy->xpos && vars->player_pos.ypos == enemy->ypos)
+					{
+						ft_printf("SLAYED BITCH");
+						exit(EXIT_SUCCESS);
+					}
+				}
+			}
+			// else if(pos == 1)
+			// {
+			// 	if (!is_wall(vars->map, *enemy, 13))
+			// 	{
+			// 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_ground, enemy->xpos * 40, enemy->ypos * 40);
+			// 		vars->map[enemy->ypos][enemy->xpos] = '0';
+			// 		vars->map[enemy->ypos - 1][enemy->xpos] = 'T';
+			// 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_enemy, enemy->xpos * 40, enemy->ypos - 1 * 40);
+			// 		if (vars->player_pos.xpos == enemy->xpos && vars->player_pos.ypos == enemy->ypos - 1)
+			// 		{
+			// 			ft_printf("SLAYED BITCH");
+			// 			exit(EXIT_SUCCESS);
+			// 		}
+			// 		enemy->ypos--;
+			// 	}
+			// }
 			head = head->next;
 		}
 	}

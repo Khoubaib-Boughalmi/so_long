@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:55:55 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/12 13:11:10 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:19:03 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <fcntl.h>
 # include <mlx.h>
+# include <math.h>
 
 # include "./ft_printf/ft_printf.h"
 # include "./libft/libft.h"
