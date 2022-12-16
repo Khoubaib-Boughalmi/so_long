@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 16:04:24 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/12 15:46:20 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/13 19:52:07 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ int	key_hook_core(t_vars *vars, int key, t_new_pos *new_pos, void *image)
 {
 	if (!is_wall(vars->map, vars->player_pos, key))
 	{
-		
 		vars->player_pos.steps++;
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_tree,3*40, 0);
 		if (is_collectable(vars->map, vars->player_pos, key))
 			vars->player_pos.collected++;
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_ground,
@@ -48,18 +46,25 @@ int	key_hook_core(t_vars *vars, int key, t_new_pos *new_pos, void *image)
 		vars->player_pos.xpos = new_pos->new_xpos;
 		vars->player_pos.ypos = new_pos->new_ypos;
 		player_mlx_put_image_to_window(vars, key);
-		char *str1;
-		char *str2;
-
-		str1 = ft_itoa(vars->player_pos.collected);
-		str2 = ft_strjoin("COLLECTED ==>", str1);
-		mlx_string_put(vars->mlx, vars->win, 0, 0, 0xFFFFFF, str2); // to be freed
-		free(str1);
-		free(str2);
-		ft_printf("Collected :%d Steps :%d\n",
-			vars->player_pos.collected, vars->player_pos.steps);
+		put_collectable_to_window(vars);
 	}
 	return (0);
+}
+
+void	put_collectable_to_window(t_vars *vars)
+{
+	char	*str1;
+	char	*str2;
+
+	mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->img.img_tree, 3 * 40, 0);
+	str1 = ft_itoa(vars->player_pos.collected);
+	str2 = ft_strjoin("COLLECTED ==>", str1);
+	mlx_string_put(vars->mlx, vars->win, 0, 0, 0xFFFFFF, str2);
+	free(str1);
+	free(str2);
+	ft_printf("Collected :%d Steps :%d\n",
+		vars->player_pos.collected, vars->player_pos.steps);
 }
 
 //add key handlers to key events

@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:55:55 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/12 17:19:03 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/16 22:27:59 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ typedef struct s_img {
 	void			*img_tnt;
 	void			*img_tnt1;
 	void			*img_tnt2;
-	void			*img_enemy;
+	void			*img_renemy;
+	void			*img_lenemy;
 }				t_img;
 
 typedef struct s_vars {
@@ -135,6 +136,7 @@ int	is_enemy(char **map, t_player player_pos, int c);
 int	is_enemy_core(char **map, t_new_pos *new_pos);
 
 int render_enemy(t_vars *vars);
+void put_collectable_to_window(t_vars *vars);
 
 #endif
 //gcc render_map.c map_check.c map_to_matrix.c utils.c so_long.c ft_printf/*.c libft/*.c positions.c is_enemy.c map_metadata.c check_path.c key_hook.c exit.c initial_position.c -lmlx -framework OpenGL -framework AppKit; 

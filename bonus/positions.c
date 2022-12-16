@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 11:04:35 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/12 15:20:10 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/13 19:46:55 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	is_collectable(char **map, t_player player_pos, int c)
 
 	new_pos.new_xpos = player_pos.xpos;
 	new_pos.new_ypos = player_pos.ypos;
-	
 	if (c == 2)
 		new_pos.new_xpos = player_pos.xpos + 1;
 	else if (c == 0)
