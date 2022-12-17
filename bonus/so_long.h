@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:55:55 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/17 15:07:57 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:38:11 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ typedef struct s_vars {
 }				t_vars;
 
 typedef struct s_enemy {
-	int x;
-	int y;
+	int	x;
+	int	y;
 }	t_enemy;
 
 typedef struct s_new_pos {
@@ -132,11 +132,15 @@ int		check_path(t_vars *vars, t_map *map_info, char *map_name);
 //exit.c
 int		safe_exit(t_vars *vars);
 //is_enemy.c
-int	is_enemy(char **map, t_player player_pos, int c);
-int	is_enemy_core(char **map, t_new_pos *new_pos);
+int		is_enemy(char **map, t_player player_pos, int c);
+int		is_enemy_core(char **map, t_new_pos *new_pos);
 
-void render_enemy(t_vars *vars, t_player *enemy, int i, int j);
-void put_collectable_to_window(t_vars *vars);
+void	render_enemy(t_vars *vars, t_player *enemy, int i, int j);
+void	put_collectable_to_window(t_vars *vars);
 
+void	initiate_img_vars(t_vars *vars, int *w, int *h);
+void	initial_render_map_components(t_vars *vars, char **map, int i, int j);
+
+int		is_collectable_enemy(char **map, t_player player_pos, int c);
+int		is_collectable_enemy_core(char **map, t_new_pos *new_pos);
 #endif
-//gcc render_map.c map_check.c map_to_matrix.c utils.c so_long.c ft_printf/*.c libft/*.c positions.c is_enemy.c map_metadata.c check_path.c key_hook.c exit.c initial_position.c -lmlx -framework OpenGL -framework AppKit; 
