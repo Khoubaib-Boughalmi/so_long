@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:23:36 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/10 15:26:14 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/17 19:22:11 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int argc, char **argv)
 	char	**map;
 	char	*map_name;
 
+	(void)argc;
 	map_name = ft_strjoin("maps/", argv[1]);
 	if (!populate_map_metadata(&map_info, map_name))
 		return (0);
