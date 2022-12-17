@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:55:55 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/16 22:27:59 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:07:57 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int		safe_exit(t_vars *vars);
 int	is_enemy(char **map, t_player player_pos, int c);
 int	is_enemy_core(char **map, t_new_pos *new_pos);
 
-int render_enemy(t_vars *vars);
+void render_enemy(t_vars *vars, t_player *enemy, int i, int j);
 void put_collectable_to_window(t_vars *vars);
 
 #endif
