@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_path.c                                       :+:      :+:    :+:   */
+/*   check_path_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:11:05 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/13 19:54:22 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:37:43 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	check_path(t_vars *vars, t_map *map_info, char *map_name)
 	populate_map_data(map_info, map, map_name);
 	count = check_path_core(map, map_info, vars->player_pos.ypos, \
 		vars->player_pos.xpos);
+	free_map_matrix(map, map_info->o_rows - 1);
 	if (count != vars->component.collectable)
 		return (ft_printf_err("MAP IS INVALID NO VALID PATH"));
-	free_map_matrix(map, map_info->o_rows - 1);
 	return (1);
 }

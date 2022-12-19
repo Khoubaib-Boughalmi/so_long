@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 16:04:24 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/18 20:44:07 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:35:13 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	key_hook_core(t_vars *vars, int key, t_new_pos *new_pos)
 		vars->player_pos.xpos = new_pos->new_xpos;
 		vars->player_pos.ypos = new_pos->new_ypos;
 		player_mlx_put_image_to_window(vars, key);
-		ft_printf("Collected :%d Steps :%d\n",
+		ft_printf("\rCollected :%d Steps :%d",
 			vars->player_pos.collected, vars->player_pos.steps);
 	}
 	return (0);

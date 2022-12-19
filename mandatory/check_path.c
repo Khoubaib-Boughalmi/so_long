@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:11:05 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/11 16:30:20 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:37:34 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	check_path(t_vars *vars, t_map *map_info, char *map_name)
 	populate_map_data(map_info, map, map_name);
 	count = check_path_core(map, map_info, vars->player_pos.ypos, \
 		vars->player_pos.xpos);
+	free_map_matrix(map, map_info->o_rows - 1);
 	if (count != vars->component.collectable)
 		return (ft_printf_err("MAP IS INVALID NO VALID PATH"));
 	return (1);
