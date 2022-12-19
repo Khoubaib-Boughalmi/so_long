@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:42:02 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/19 15:19:40 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:24:18 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int	safe_exit(t_vars *vars)
 	mlx_destroy_image(vars->mlx, vars->img.img_tnt2);
 	mlx_destroy_image(vars->mlx, vars->img.img_renemy);
 	mlx_destroy_image(vars->mlx, vars->img.img_lenemy);
+	mlx_destroy_image(vars->mlx, vars->img.img_player_back);
+	mlx_destroy_image(vars->mlx, vars->img.img_player_front);
+	mlx_destroy_image(vars->mlx, vars->img.img_player_right);
 	free_map_matrix(vars->map, vars->map_info.o_rows - 1);
 	free(vars->mlx);
 	ft_printf("\nGAME ENDED\n");
