@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 16:04:24 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/13 19:43:27 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/18 20:44:07 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	player_mlx_put_image_to_window(t_vars *vars, int key)
 			vars->player_pos.xpos * 40, vars->player_pos.ypos * 40);
 }
 
-int	key_hook_core(t_vars *vars, int key, t_new_pos *new_pos, void *image)
+int	key_hook_core(t_vars *vars, int key, t_new_pos *new_pos)
 {
 	if (!is_wall(vars->map, vars->player_pos, key))
 	{
@@ -69,5 +69,5 @@ int	key_hook(int button, t_vars *vars)
 		safe_exit(vars);
 	else
 		return (0);
-	return (key_hook_core(vars, button, &new_pos, vars->img.img_player_right));
+	return (key_hook_core(vars, button, &new_pos));
 }

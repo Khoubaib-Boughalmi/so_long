@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   ft_isdigt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/10 14:42:02 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/17 19:34:02 by kboughal         ###   ########.fr       */
+/*   Created: 2022/09/29 15:49:44 by kboughal          #+#    #+#             */
+/*   Updated: 2022/09/29 16:42:29 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "so_long.h"
-
-int	safe_exit(t_vars *vars)
+int	ft_isdigit(int c)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
-	mlx_destroy_image(vars->mlx, vars->img.img_ground);
-	mlx_destroy_image(vars->mlx, vars->img.img_key);
-	mlx_destroy_image(vars->mlx, vars->img.img_tent);
-	mlx_destroy_image(vars->mlx, vars->img.img_tree);
-	free_map_matrix(vars->map, vars->map_info.o_rows - 1);
-	free(vars->mlx);
-	ft_printf("GAME ENDED\n");
-	exit(EXIT_SUCCESS);
+	if (c >= '0' && c <= '9')
+		return (1);
 	return (0);
 }

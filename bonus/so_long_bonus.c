@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:23:36 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/17 19:22:11 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/18 16:21:20 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	char	*map_name;
 
 	(void)argc;
-	map_name = ft_strjoin("maps/", argv[1]);
+	map_name = ft_strjoin("bonus/maps/", argv[1]);
 	if (!populate_map_metadata(&map_info, map_name))
 		return (0);
 	if (!check_valid_cols(&map_info, map_name))

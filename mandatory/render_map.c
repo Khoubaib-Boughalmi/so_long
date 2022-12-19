@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:51:03 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/11 16:20:14 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:31:19 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,21 @@ void	render_map_components(t_vars *vars, t_map *map_info, char **map)
 void	initiate_img_vars(t_vars *vars, int *w, int *h)
 {
 	vars->img.img_ground = mlx_xpm_file_to_image(vars->mlx, \
-		"img/ground.xpm", w, h);
+		"mandatory/img/ground.xpm", w, h);
 	vars->img.img_tree = mlx_xpm_file_to_image(vars->mlx, \
-	"img/tree.xpm", w, h);
+	"mandatory/img/tree.xpm", w, h);
 	vars->img.img_player_right = mlx_xpm_file_to_image(vars->mlx, \
-	"img/pright.xpm", w, h);
+	"mandatory/img/pright.xpm", w, h);
 	vars->img.img_player_left = mlx_xpm_file_to_image(vars->mlx, \
-	"img/pleft.xpm", w, h);
+	"mandatory/img/pleft.xpm", w, h);
 	vars->img.img_player_back = mlx_xpm_file_to_image(vars->mlx, \
-	"img/pback.xpm", w, h);
+	"mandatory/img/pback.xpm", w, h);
 	vars->img.img_player_front = mlx_xpm_file_to_image(vars->mlx, \
-	"img/pfront.xpm", w, h);
+	"mandatory/img/pfront.xpm", w, h);
 	vars->img.img_key = mlx_xpm_file_to_image(vars->mlx, \
-	"img/key.xpm", w, h);
+	"mandatory/img/key.xpm", w, h);
 	vars->img.img_tent = mlx_xpm_file_to_image(vars->mlx, \
-	"img/tent.xpm", w, h);
+	"mandatory/img/tent.xpm", w, h);
 }
 
 //initiate variables and populate structs
@@ -78,7 +78,7 @@ void	render_map(t_vars *vars, t_map *map_info, char **map_matrix)
 	vars->map = map_matrix;
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, map_info->o_cols * 40, \
-		map_info->o_rows * 40, "lainie JR");
+		map_info->o_rows * 40, "so_long");
 	initiate_img_vars(vars, &w, &h);
 	render_map_components(vars, map_info, map_matrix);
 	mlx_hook(vars->win, 2, 0, key_hook, vars);

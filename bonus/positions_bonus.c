@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   positions.c                                        :+:      :+:    :+:   */
+/*   positions_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 11:04:35 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/13 19:46:55 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/18 16:56:34 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	is_exit_core(char **map, t_new_pos *new_pos, t_vars *vars)
 	if (map[new_pos->new_ypos][new_pos->new_xpos] == 'E' \
 		&& vars->player_pos.collected == vars->component.collectable)
 	{
-		ft_printf("~~~~~~~ YOU WON ~~~~~~~\n");
+		ft_printf("\n~~~~~~~ YOU WON ~~~~~~~");
 		return (1);
 	}
 	else

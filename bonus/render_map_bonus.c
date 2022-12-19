@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_map.c                                       :+:      :+:    :+:   */
+/*   render_map_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:51:03 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/17 15:30:16 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/18 16:13:43 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	move_enemy(t_vars *vars, t_player *enemy, int key, t_new_pos *n_pos)
 		if (vars->player_pos.xpos == n_pos->new_xpos && \
 			vars->player_pos.ypos == n_pos->new_ypos)
 		{
-			ft_printf("SLAYED BITCH");
+			ft_printf("\nSLAYED BITCH");
 			exit(EXIT_SUCCESS);
 		}
 		enemy->xpos = n_pos->new_xpos;

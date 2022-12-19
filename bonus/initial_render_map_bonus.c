@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initial_render_map.c                               :+:      :+:    :+:   */
+/*   initial_render_map_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:23:03 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/17 15:37:14 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/18 16:12:21 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	initial_render_map_components(t_vars *vars, char **map, int i, int j)
 {
 	t_player	*enemy;
 
+	enemy = NULL;
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_ground, j
 		* 40, i * 40);
 	if (map[i][j] == '1')
@@ -31,7 +32,7 @@ void	initial_render_map_components(t_vars *vars, char **map, int i, int j)
 		mlx_put_image_to_window(vars->mlx, vars->win,
 			vars->img.img_player_right, j * 40, i * 40);
 	}
-	else if (map[i][j] == 'E')
+	if (map[i][j] == 'E')
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_tent, j
 			* 40, i * 40);
 	else if (map[i][j] == 'T')
@@ -55,6 +56,8 @@ void	render_map_components(t_vars *vars, t_map *map_info, char **map)
 
 	i = 0;
 	j = 0;
+	(void)vars;
+	(void)map;
 	while (i < map_info->o_rows)
 	{
 		j = -1;

@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:55:55 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/11 16:34:54 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:34:50 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 void	render_map(t_vars *vars, t_map *map_info, char **map);
 void	render_map_components(t_vars *vars, t_map *map_info, char **map);
 //key_hook.c
-int		key_hook_core(t_vars *vars, int key, t_new_pos *new_pos, void *image);
+int		key_hook_core(t_vars *vars, int key, t_new_pos *new_pos);
 int		key_hook(int button, t_vars *vars);
 
 //positions.c
@@ -116,4 +116,3 @@ int		check_path(t_vars *vars, t_map *map_info, char *map_name);
 int		safe_exit(t_vars *vars);
 
 #endif
-//gcc render_map.c map_check.c map_to_matrix.c utils.c so_long.c ft_printf/*.c positions.c map_metadata.c check_path.c key_hook.c exit.c initial_position.c -lmlx -framework OpenGL -framework AppKit;
