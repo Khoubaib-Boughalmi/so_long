@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 16:04:24 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/19 15:19:40 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:11:28 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	put_collectable_to_window(t_vars *vars)
 
 	mlx_put_image_to_window(vars->mlx, vars->win, \
 		vars->img.img_tree, 3 * 40, 0);
-	str1 = ft_itoa(vars->player_pos.collected);
-	str2 = ft_strjoin("COLLECTED ==>", str1);
+	str1 = ft_itoa(vars->player_pos.steps);
+	str2 = ft_strjoin("NUM STEPS==>", str1);
 	mlx_string_put(vars->mlx, vars->win, 0, 0, 0xFFFFFF, str2);
 	free(str1);
 	free(str2);
