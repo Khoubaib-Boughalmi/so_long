@@ -6,11 +6,11 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:11:05 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/19 13:37:43 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:19:40 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	check_path_core(char **map, t_map *info, int i, int j)
 {

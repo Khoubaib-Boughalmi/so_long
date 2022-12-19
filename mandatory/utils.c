@@ -6,11 +6,11 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 16:54:42 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/10 15:26:29 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:11:21 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	ft_printf_err(char *str)
 {

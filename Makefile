@@ -19,7 +19,8 @@ SRCS_BONUS= ./bonus/render_map_bonus.c \
 			./bonus/initial_position_bonus.c \
 			./bonus/initial_render_map_bonus.c \
 			./bonus/initiate_img_vars_bonus.c \
-			./bonus/is_collectable_enemy_bonus.c 
+			./bonus/is_collectable_enemy_bonus.c \
+			./bonus/animated_components.c 
 
 SRCS_MAND= 	./mandatory/render_map.c \
 			./mandatory/map_check.c \

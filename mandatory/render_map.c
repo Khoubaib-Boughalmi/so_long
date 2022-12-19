@@ -6,11 +6,11 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:51:03 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/19 12:31:19 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:08:22 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 // render map's element based on the map matrix
 void	initial_render_map_components(t_vars *vars, char **map, int i, int j)

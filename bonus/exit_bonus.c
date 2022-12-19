@@ -6,11 +6,11 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:42:02 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/18 20:03:23 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:19:40 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	safe_exit(t_vars *vars)
 {

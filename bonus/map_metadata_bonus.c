@@ -6,11 +6,11 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:20:36 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/18 15:55:07 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:19:40 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 // return us the #of rows in map
 int	get_num_rows_map(int fd)

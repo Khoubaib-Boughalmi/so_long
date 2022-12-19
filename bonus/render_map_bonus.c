@@ -6,32 +6,13 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:51:03 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/18 16:13:43 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:41:36 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 //initiate variables and populate structs
-
-void	animate_player(t_vars *vars)
-{
-	if (vars->frame % 300 == 0)
-	{
-		vars->animation = (vars->animation + 1) % 3;
-		if (vars->animation == 0)
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_tnt, \
-			vars->player_pos.xpos * 40, vars->player_pos.ypos * 40);
-		else if (vars->animation == 1)
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_tnt1, \
-			vars->player_pos.xpos * 40, vars->player_pos.ypos * 40);
-		else
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_tnt2, \
-			vars->player_pos.xpos * 40, vars->player_pos.ypos * 40);
-	}
-	vars->frame++;
-}
-
 void	move_enemy(t_vars *vars, t_player *enemy, int key, t_new_pos *n_pos)
 {
 	if (!is_wall(vars->map, *enemy, key) && \
@@ -90,6 +71,7 @@ int	render_player(t_vars *vars)
 	t_new_pos	new_pos;
 
 	animate_player(vars);
+	animate_exit(vars);
 	if (vars->frame % 8000 == 0)
 	{
 		head = vars->enemies;

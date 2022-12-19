@@ -6,11 +6,11 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 11:04:35 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/18 16:56:34 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:19:40 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	is_wall(char **map, t_player player_pos, int c)
 {

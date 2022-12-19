@@ -6,11 +6,11 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:21:22 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/18 16:11:33 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:31:27 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	initiate_img_vars(t_vars *vars, int *w, int *h)
 {
@@ -32,4 +32,10 @@ void	initiate_img_vars(t_vars *vars, int *w, int *h)
 	"bonus/img/renemy.xpm", w, h);
 	vars->img.img_lenemy = mlx_xpm_file_to_image(vars->mlx, \
 	"bonus/img/lenemy.xpm", w, h);
+	vars->img.img_player_back = mlx_xpm_file_to_image(vars->mlx, \
+	"bonus/img/p1.xpm", w, h);
+	vars->img.img_player_front = mlx_xpm_file_to_image(vars->mlx, \
+	"bonus/img/p2.xpm", w, h);
+	vars->img.img_player_right = mlx_xpm_file_to_image(vars->mlx, \
+	"bonus/img/p3.xpm", w, h);
 }

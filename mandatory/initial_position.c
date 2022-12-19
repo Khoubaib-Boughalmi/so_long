@@ -6,11 +6,11 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 15:16:32 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/10 15:17:17 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:11:21 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 //get initale position of the player and set it to vars struct
 void	get_initial_pos(t_vars *vars, t_map *map_info, char **map_matrix)

@@ -6,11 +6,11 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:23:03 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/18 16:12:21 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:45:18 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	initial_render_map_components(t_vars *vars, char **map, int i, int j)
 {
@@ -33,8 +33,8 @@ void	initial_render_map_components(t_vars *vars, char **map, int i, int j)
 			vars->img.img_player_right, j * 40, i * 40);
 	}
 	if (map[i][j] == 'E')
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_tent, j
-			* 40, i * 40);
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->img.img_player_back, j * 40, i * 40);
 	else if (map[i][j] == 'T')
 		render_enemy(vars, enemy, i, j);
 }

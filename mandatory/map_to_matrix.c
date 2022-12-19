@@ -6,11 +6,11 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 15:39:06 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/07 13:27:22 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:11:21 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 char	**free_map_matrix(char **map_matrix, int pos)
 {
