@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 16:04:24 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/19 18:11:28 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:17:21 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ void	put_collectable_to_window(t_vars *vars)
 	mlx_string_put(vars->mlx, vars->win, 0, 0, 0xFFFFFF, str2);
 	free(str1);
 	free(str2);
-	ft_printf("\rCollected :%d Steps :%d",
-		vars->player_pos.collected, vars->player_pos.steps);
 }
 
 //add key handlers to key events

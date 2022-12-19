@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 17:05:20 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/19 15:19:40 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:18:15 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	is_enemy_core(char **map, t_new_pos *new_pos)
 {
 	if (map[new_pos->new_ypos][new_pos->new_xpos] == 'T')
 	{
-		ft_printf("\nU'VE BEEN SLAYED BY ENEMY");
+		ft_printf("U'VE BEEN SLAYED BY ENEMY");
 		return (1);
 	}
 	return (0);
