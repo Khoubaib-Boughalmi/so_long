@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 15:21:22 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/19 16:31:27 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/21 19:40:15 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	initiate_img_vars(t_vars *vars, int *w, int *h)
 {
 	vars->img.img_ground = mlx_xpm_file_to_image(vars->mlx, \
-		"bonus/img/ground.xpm", w, h);
+	"bonus/img/ground.xpm", w, h);
 	vars->img.img_tree = mlx_xpm_file_to_image(vars->mlx, \
 	"bonus/img/tree.xpm", w, h);
 	vars->img.img_key = mlx_xpm_file_to_image(vars->mlx, \
