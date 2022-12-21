@@ -6,7 +6,7 @@
 /*   By: kboughal <kboughal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:51:03 by kboughal          #+#    #+#             */
-/*   Updated: 2022/12/19 18:18:24 by kboughal         ###   ########.fr       */
+/*   Updated: 2022/12/21 16:03:10 by kboughal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	render_player(t_vars *vars)
 
 	animate_player(vars);
 	animate_exit(vars);
-	if (vars->frame % 8000 == 0)
+	if (vars->frame % 3000 == 0)
 	{
 		head = vars->enemies;
 		while (head)
